@@ -12,6 +12,9 @@ const cartReducer = (state = {}, action) => {
         }
       }
       return newState;
+      case REMOVE_ITEM_TO_CART:
+        delete newState[action.itemId]
+        return newState
     default:
       return newState;
   }
@@ -25,5 +28,12 @@ export const populateCart = (item) => {
   })
 }
 
+const REMOVE_ITEM_TO_CART = "REMOVE_ITEM_TO_CART"
+export const unpopulateCart = (itemId) => {
+  return ({
+    type: REMOVE_ITEM_TO_CART,
+    itemId
+  })
+}
 
 export default cartReducer;
