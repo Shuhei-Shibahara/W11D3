@@ -18,8 +18,13 @@ const cartReducer = (state = {}, action) => {
         return newState
 
     case SET_ITEM_COUNT:
-      // debugger
-      newState[action.itemId].count = action.number
+      // debugger\
+      if (action.number > 0 || !action.number ){
+        newState[action.itemId].count = action.number
+      } else{
+        delete newState[action.itemId]
+      }
+
       return newState
 
     default:

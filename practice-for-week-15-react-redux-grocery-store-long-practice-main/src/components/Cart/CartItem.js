@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { unpopulateCart, increaseItem, decreaseItem, setItem } from '../../store/cart';
+import { unpopulateCart, setItem } from '../../store/cart';
 import { useDispatch } from 'react-redux';
 
 function CartItem({ item }) {
