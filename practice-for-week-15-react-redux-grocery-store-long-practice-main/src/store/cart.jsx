@@ -16,15 +16,12 @@ const cartReducer = (state = {}, action) => {
       case REMOVE_ITEM_TO_CART:
         delete newState[action.itemId]
         return newState
-      
-      case INCREASE_ITEM_NUMBER:
-        newState[action.itemId].count += 1
+
+    case SET_ITEM_COUNT:
+      // debugger
+      newState[action.itemId].count = action.number
       return newState
 
-    case DECREASE_ITEM_NUMBER:
-      newState[action.itemId].count -= 1
-      return newState
-      
     default:
       return newState;
   }
@@ -46,18 +43,11 @@ export const unpopulateCart = (itemId) => {
   })
 }
 
-const INCREASE_ITEM_NUMBER = "INCREASE_ITEM_NUMBER"
-export const increaseItem = (itemId) => {
+const SET_ITEM_COUNT = "SET_ITEM_COUNT"
+export const setItem = (itemId,number) => {
   return ({
-    type: INCREASE_ITEM_NUMBER,
-    itemId
-  })
-}
-
-const DECREASE_ITEM_NUMBER = "DECREASE_ITEM_NUMBER"
-export const decreaseItem = (itemId) => {
-  return ({
-    type: DECREASE_ITEM_NUMBER,
+    type: SET_ITEM_COUNT,
+    number,
     itemId
   })
 }
